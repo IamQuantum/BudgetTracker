@@ -1,8 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Expense Tracker
 
-## Getting Started
+A simple expense tracking app built with Next.js (App Router), TypeScript, and Tailwind CSS. Track incomes and expenses, categorize transactions, and view basic reports.
 
-First, run the development server:
+## Features
+
+- Add / edit / delete transactions (amount, date, category, notes)
+- Categorization and monthly summaries
+- Responsive UI with Tailwind CSS
+- Persist data locally with Prisma + SQLite (configurable for other databases)
+- Simple charts for overview (e.g., Chart.js)
+
+## Tech stack
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Prisma ORM + SQLite (default)
+- Optional: Chart.js for visualizations
+
+## Getting started
+
+1. Clone the repo and install dependencies:
+
+```bash
+git clone <repo-url>
+cd expense-tracker
+npm install
+# or yarn / pnpm install
+```
+
+2. Setup environment
+
+Create a .env file in the project root. Example:
+
+```env
+DATABASE_URL="file:./dev.db"
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+```
+
+3. Initialize the database (Prisma + SQLite example)
+
+```bash
+npx prisma migrate dev --name init
+# or, if you prefer no migrations:
+# npx prisma db push
+```
+
+4. Run the development server
 
 ```bash
 npm run dev
@@ -10,27 +54,40 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- dev — run Next.js in development
+- build — build for production
+- start — start production server
+- lint — run ESLint
+- format — run Prettier (if configured)
+- prisma:migrate — apply Prisma migrations
+- prisma:studio — open Prisma Studio
 
-## Learn More
+(These scripts are defined in package.json — adjust names/commands to match your setup.)
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure (typical)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- app/ — Next.js App Router pages and layouts
+- components/ — UI components
+- prisma/ — schema.prisma and migrations
+- lib/ — utilities (db clients, helpers)
+- styles/ — global styles / Tailwind config
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Build and deploy like any Next.js app. Vercel is recommended for quick deployments. Ensure environment variables are set in the deployment platform (DATABASE_URL, NEXT_PUBLIC_BASE_URL).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions, issues, and feature requests are welcome. Open a PR with clear changes and tests where applicable.
+
+## License
+
+Specify your license (e.g., MIT) in LICENSE file.
+
+If your project uses a different database or charting library, update the instructions and env variables accordingly.
